@@ -1,4 +1,4 @@
-# ARIANA — Prototipo académico de orientación de bienestar
+# ARIANA - Prototipo académico de orientación de bienestar
 
 **Stack:** Angular 20 SPA (frontend), Java 21 + Spring Boot 4.1.1 (API), PostgreSQL 15.3 + Docker Compose (datos).  
 **Alcance:** Registro, verificación de correo, JWT/refresh, perfil, CRUD administrativo, cuestionario de hábitos, resultados orientativos e historial propio.
