@@ -1,24 +1,14 @@
-# Dependencies
-node_modules/
-
-# Build output
-dist/
-.astro/
-target/
-
-# Environment variables
-.env
-.env.*
-
-# Docker database data
+# Dependencias y compilaciones
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+backend/target/
+# Secretos y datos locales
+database/.env
 database/postgres/
 database/pgadmin/
-
-# IDE
+**/.env
+# Entornos de desarrollo
 .idea/
-
-# OS
-.DS_Store
-
-# Logs
+.vscode/
 *.log

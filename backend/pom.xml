@@ -13,11 +13,11 @@
 	</parent>
 
 	<groupId>com.template</groupId>
-	<artifactId>auth-template</artifactId>
+	<artifactId>ariana-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>Auth Template</name>
-	<description>Reusable authentication and authorization backend template</description>
+	<name>ARIANA Backend</name>
+	<description>ARIANA webapp de orientación de bienestar (prototipo educativo)</description>
 
 	<properties>
 		<java.version>21</java.version>

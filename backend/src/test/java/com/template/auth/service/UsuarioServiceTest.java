@@ -2,6 +2,7 @@ package com.template.auth.service;
 
 import com.template.auth.entity.Usuario;
 import com.template.auth.repository.EmailVerificationTokenRepository;
+import com.template.auth.repository.EvaluacionRepository;
 import com.template.auth.repository.PasswordResetTokenRepository;
 import com.template.auth.repository.RefreshTokenRepository;
 import com.template.auth.repository.UsuarioRepository;
@@ -31,6 +32,9 @@ class UsuarioServiceTest {
     @Mock
     private RefreshTokenRepository refreshTokenRepository;
 
+    @Mock
+    private EvaluacionRepository evaluacionRepository;
+
     @InjectMocks
     private UsuarioService usuarioService;
 
@@ -41,6 +45,9 @@ class UsuarioServiceTest {
 
         when(usuarioRepository.findById(1L))
                 .thenReturn(Optional.of(usuario));
+
+        when(evaluacionRepository.findByUsuarioIdOrderByFechaDesc(1L))
+                .thenReturn(java.util.List.of());
 
         usuarioService.eliminarUsuario(1L);
 

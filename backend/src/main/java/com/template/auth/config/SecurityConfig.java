@@ -1,12 +1,12 @@
 package com.template.auth.config;
 
+import jakarta.servlet.DispatcherType;
 import com.template.auth.security.JwtFilter;
 import com.template.auth.security.OriginValidationFilter;
 import com.template.auth.security.RateLimitFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -46,6 +46,8 @@ public class SecurityConfig {
                         )
                 )
                 .authorizeHttpRequests(auth -> auth
+                        .dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
+                        .requestMatchers("/error").permitAll()
                         .requestMatchers(
                                 "/api/auth/register",
                                 "/api/auth/login",
@@ -55,9 +57,10 @@ public class SecurityConfig {
                                 "/api/auth/reset-password",
                                 "/api/auth/verify-email"
                         ).permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/usuarios").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.DELETE, "/api/usuarios/**").hasRole("ADMIN")
-                        .anyRequest().authenticated()
+                        .requestMatchers("/api/usuarios/me").authenticated()
+                        .requestMatchers("/api/usuarios", "/api/usuarios/**").hasRole("ADMIN")
+                        .requestMatchers("/api/preguntas", "/api/preguntas/**", "/api/evaluaciones", "/api/evaluaciones/**").authenticated()
+                        .anyRequest().denyAll()
                 )
                 .addFilterBefore(originValidationFilter, LogoutFilter.class)
                 .addFilterBefore(rateLimitFilter, LogoutFilter.class)

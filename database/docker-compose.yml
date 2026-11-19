@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres:15.3
-    container_name: auth-template-postgres
+    container_name: ariana-postgres
     restart: always
     ports:
       - '5432:5432'
@@ -14,7 +14,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: auth-template-pgadmin
+    container_name: ariana-pgadmin
     restart: always
     depends_on:
       - postgres
